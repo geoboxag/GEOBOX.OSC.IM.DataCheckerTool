@@ -1,4 +1,4 @@
-[i1]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/gbGenOpen24.png "Open"
+[i1]:  https://github.com/geoboxag/GEOBOX.OSC.IM.DataCheckerTool/_images/gbGenOpen24.png "Open"
 
 # GEOBOX - DataChecker-Tool
 Tool für das Reorganisieren der Datenprüfungen vom Autodesk AutoCAD Map 3D.
