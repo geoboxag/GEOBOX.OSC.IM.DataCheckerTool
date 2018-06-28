@@ -1,10 +1,10 @@
 ﻿using System.IO;
 using System.Linq;
-using GEOBOX.IM.CH.DataChecker.Core.Domain;
-using GEOBOX.IM.CH.DataChecker.Core.IO;
+using GEOBOX.OSC.IM.DataCheckerTool.Domain;
+using GEOBOX.OSC.IM.DataCheckerTool.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GEOBOX.IM.CH.DataChecker.Core.Testing.IO
+namespace GEOBOX.OSC.IM.DataCheckerTool.Testing.IO
 {
     [TestClass]
     public sealed  class XmlDataCheckItemsWriterTests

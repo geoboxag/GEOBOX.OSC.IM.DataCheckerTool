@@ -1,13 +1,11 @@
-[i1]:  https://github.com/geoboxag/GEOBOX.OSC.IM.DataCheckerTool/_images/gbGenOpen24.png "Open"
-
 # GEOBOX - DataChecker-Tool
 Tool für das Reorganisieren der Datenprüfungen vom Autodesk AutoCAD Map 3D.
 
-##Beschrieb
+## Beschrieb
 Autodesk AutoCAD Map 3D bietet zurzeit keine Möglichkeit, Datenprüfungen (DataChecks) zu organisieren und sortieren an.
 Mit diesem Tool können die Datenprüfungen unabhängig organisert und sortiert werden.
 
-##Vorgehen
+## Vorgehen
 1. Datenprüfungen mit dem Autodesk Infrastructure Administrator exportieren.
 2. Die exportierte Datei mit dem Tool öffnen.
 3. Datenprüfungen nach Wunsch organisieren und sortieren.
@@ -15,20 +13,21 @@ Mit diesem Tool können die Datenprüfungen unabhängig organisert und sortiert 
 5. Die bestehenden Dantenprüfungen mit dem Autodesk Infrastructure Administrator löschen.
 6. Die gespeicherte Datei mit dem Autodesk Infrastructure Administrator importieren.
 
-##Voraussetzungen und Installation
-###Voraussetzung
+## Voraussetzungen und Installation
+### Voraussetzung
 - Microsoft .NET Framework 4.7
 
-###Installation
+### Installation
 - Es benötigt keine Installation.
 - Die Applikation kann aus einem beliebigen Verzeichnis aus gestartet werden.
 
-###Hinweis
+### Hinweis
 - Das Tool setzt keine Installation vom Autodesk Infrastructure Administrator oder dem Autodesk AutoCAD Map 3D auf der Arbeitsstation voraus.
 
-##Funktionen
+## Funktionen
 ### Übersicht
-[BILD]
+![](https://github.com/geoboxag/GEOBOX.OSC.IM.DataCheckerTool/raw/master/_images/overview.png)
+
 ### Funktionen
 | Nr. | Icon     | Beschrieb |
 |-----|----------|-----------|
@@ -41,3 +40,12 @@ Mit diesem Tool können die Datenprüfungen unabhängig organisert und sortiert 
 | 5   |          | Per "Ziehen und Loslassen" (Drag and Drop) können Themen und Prüfungen beliebig umsortiert werden. |
 | 6   |          | Zeigt Meldungen vom System an.                       |
 | 7   | ![][i7]  | Speichert die Datei mit den Datenprüfungen.          |
+
+
+[i1]:  https://github.com/geoboxag/GEOBOX.OSC.IM.DataCheckerTool/raw/master/_images/gbGenOpen24.png "Open"
+[i7]:  https://github.com/geoboxag/GEOBOX.OSC.IM.DataCheckerTool/raw/master/_images/gbGenSave24.png "Save"
+
+[i2a]:  https://github.com/geoboxag/GEOBOX.OSC.IM.DataCheckerTool/raw/master/_images/gbSortAllAsc16.png "Order Icon"
+[i2b]:  https://github.com/geoboxag/GEOBOX.OSC.IM.DataCheckerTool/raw/master/_images/gbSortAllDesc16.png "Order Icon"
+[i3a]:  https://github.com/geoboxag/GEOBOX.OSC.IM.DataCheckerTool/raw/master/_images/gbSortAsc16.png "Order Icon"
+[i3b]:  https://github.com/geoboxag/GEOBOX.OSC.IM.DataCheckerTool/raw/master/_images/gbSortDesc16.png "Order Icon"

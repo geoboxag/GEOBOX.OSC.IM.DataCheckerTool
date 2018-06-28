@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GEOBOX.IM.CH.DataChecker.Core.Testing.IO
+namespace GEOBOX.OSC.IM.DataCheckerTool.Testing.IO
 {
     [TestClass]
     public sealed class XmlDataCheckItemsReaderTests

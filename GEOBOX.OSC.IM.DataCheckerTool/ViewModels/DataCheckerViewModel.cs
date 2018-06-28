@@ -105,10 +105,6 @@ namespace GEOBOX.OSC.IM.DataCheckerTool.ViewModels
             }
         }
 
-        public string ApplicationVersion => $"{AssemblyVersion.Major}.{AssemblyVersion.Minor}.{AssemblyVersion.Build}";
-
-        private Version AssemblyVersion => GetType().Assembly.GetName().Version;
-
         public ICommand LoadDataCheckerFileCommand { get; }
 
         public bool Load(string toLoadDataCheckerFile)

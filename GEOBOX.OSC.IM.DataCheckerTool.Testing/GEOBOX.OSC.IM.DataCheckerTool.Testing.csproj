@@ -6,9 +6,9 @@
     <ProjectGuid>{A594613B-C67D-4C9E-BB16-C85228D4A8A6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GEOBOX.IM.CH.DataChecker.Core.Testing</RootNamespace>
-    <AssemblyName>GEOBOX.IM.CH.DataChecker.Core.Testing</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>GEOBOX.OSC.IM.DataCheckerTool.Testing</RootNamespace>
+    <AssemblyName>GEOBOX.OSC.IM.DataCheckerTool.Testing</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -16,6 +16,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,11 +57,16 @@
     <Compile Include="IO\XmlDataCheckItemsWriterTests.cs" />
     <Compile Include="IO\XmlTestFileReader.cs" />
     <Compile Include="IO\XmlDataCheckItemsReaderTests.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="IO\GB_WW_Data_Checker.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GEOBOX.OSC.IM.DataCheckerTool\GEOBOX.OSC.IM.DataCheckerTool.csproj">
+      <Project>{2748c97e-57b8-4e45-9c02-a48694cc3a63}</Project>
+      <Name>GEOBOX.OSC.IM.DataCheckerTool</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

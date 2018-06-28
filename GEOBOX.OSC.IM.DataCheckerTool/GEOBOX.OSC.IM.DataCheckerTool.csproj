@@ -28,15 +28,16 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\_output\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>App.ico</ApplicationIcon>
+    <ApplicationIcon>geobox.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -68,6 +69,7 @@
     <Compile Include="IO\XmlDataCheckItemsReader.cs" />
     <Compile Include="IO\XmlDataCheckItemsWriter.cs" />
     <Compile Include="Extensions\PropertyChangedEventHandlerExtensions.cs" />
+    <Compile Include="Settings\SettingsController.cs" />
     <Compile Include="ViewModels\DataCheckerViewModel.cs" />
     <Compile Include="ViewModels\LoadDataCheckerFileCommand.cs" />
     <Compile Include="ViewModels\SaveDataCheckerFileCommand.cs" />
@@ -122,26 +124,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="App.ico" />
+    <Resource Include="Includes\gbGenOpen24.png" />
+    <Resource Include="Includes\gbGenSave24.png" />
+    <Resource Include="Includes\gbSortAllAsc16.png" />
+    <Resource Include="Includes\gbSortAllDesc16.png" />
+    <Resource Include="Includes\gbSortAsc16.png" />
+    <Resource Include="Includes\gbSortDesc16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Includes\icoFileopen.png" />
+    <Resource Include="Includes\geoboxIconWpf_24.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Includes\VSO_SortAscending_16x.png" />
-    <Resource Include="Includes\VSO_SortDescending_16x.png" />
+    <Resource Include="Includes\geobox.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Includes\Save.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Includes\Exit_16x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Includes\VSO_SortAllAscending_16x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Includes\VSO_SortAllDescending_16x.png" />
+    <Resource Include="geobox.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

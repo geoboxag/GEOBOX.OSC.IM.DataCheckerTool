@@ -31,9 +31,12 @@ namespace GEOBOX.OSC.IM.DataCheckerTool
             InitializeComponent();
             DataContext = CreateDataCheckerViewModel();
 
-            //DataCheckItemRootModel = CreateDataCheckItemRootModel();
+            // Create an Show Infos
+            InfoVersionLabel.Content = Settings.SettingsController.GetAssemblyVersionString();
+
         }
 
+        #region Window Events (Close, Minimized, Drag)
         private void MainWindow_Close(object sender, System.Windows.RoutedEventArgs e)
         {
             App.Current.Shutdown();
@@ -49,7 +52,7 @@ namespace GEOBOX.OSC.IM.DataCheckerTool
         {
             DragMove();
         }
-
+        #endregion
 
         private DataCheckerViewModel CreateDataCheckerViewModel()
         {
@@ -146,8 +149,6 @@ namespace GEOBOX.OSC.IM.DataCheckerTool
             }
         }
 
-        //public DataCheckItemViewModel DataCheckItemRootModel { get; }
-
         void DataChecksTreeView_PreviewMouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -181,7 +182,6 @@ namespace GEOBOX.OSC.IM.DataCheckerTool
         {
             startPoint = e.GetPosition(null);
         }
-
 
         private void DataChecksTreeView_Drop(object sender, DragEventArgs e)
         {
@@ -262,7 +262,6 @@ namespace GEOBOX.OSC.IM.DataCheckerTool
             return indexes;
         }
 
-
         private static TreeViewItemViewModel GetDropParent(bool isRootDataCheckItem, DataCheckItemViewModel dropTarget)
         {
             return isRootDataCheckItem ? dropTarget : dropTarget.Parent;
@@ -327,11 +326,6 @@ namespace GEOBOX.OSC.IM.DataCheckerTool
             }
         }
 
-        //private void CloseButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Close();
-        //}
-
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (!ReferenceEquals(mouseOverStackPanel, (StackPanel) sender))
@@ -377,7 +371,6 @@ namespace GEOBOX.OSC.IM.DataCheckerTool
 
             dataCheckerViewModel.SelectedCheckItemViewModel = DataChecksTreeView.SelectedItem as DataCheckItemViewModel;
         }
-
 
     }
 }
