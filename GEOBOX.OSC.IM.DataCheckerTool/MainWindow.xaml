@@ -1,0 +1,327 @@
+﻿<Window x:Class="GEOBOX.OSC.IM.DataCheckerTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GEOBOX.OSC.IM.DataCheckerTool"
+        xmlns:viewModels="clr-namespace:GEOBOX.OSC.IM.DataCheckerTool.ViewModels"
+        mc:Ignorable="d"
+        Title="GEOBOX - Datenprüfungen reorganisieren"
+        Height="600"
+        Width="800"
+        MinHeight="600"
+        MinWidth="800"
+        Icon="App.ico"
+        Style="{DynamicResource gbxMainWindowStyle}"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True">
+    <Grid x:Name="MainWindowGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="0" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid x:Name="HeaderGrid"
+              MouseLeftButtonDown="MainWindow_Drag"
+              Grid.Row="0">
+            <Grid.Background>
+                <SolidColorBrush Color="{DynamicResource gbxMainWindowStyleBorderColor}" />
+            </Grid.Background>
+            <Label x:Name="WindowTitleLabel"
+                   Content="GEOBOX - Datenprüfungen reorganisieren"
+                   HorizontalAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   FontSize="13.333"
+                   FontWeight="Bold"
+                   Margin="5,0,0,0">
+                <Label.Foreground>
+                    <SolidColorBrush Color="{DynamicResource gbxMainWindowTitelBarFontColor}" />
+                </Label.Foreground>
+            </Label>
+            <StackPanel x:Name="TitleBarStackPanel"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        WindowChrome.IsHitTestVisibleInChrome="True"
+                        Height="24"
+                        Margin="0,1,0,0"
+                        Width="68">
+                <Button x:Name="MinimizeButton"
+                        ToolTip="Verkleinern"
+                        Style="{DynamicResource SettingWindowTitleBarButton}"
+                        Click="MainWindow_Minimize">
+                    <Grid Width="30"
+                          Height="24">
+                        <TextBlock Text="0"
+                                   FontFamily="Marlett"
+                                   FontSize="14"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Padding="3.5,0,0,3">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="{DynamicResource gbxMainWindowTitelBarFontColor}" />
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                    </Grid>
+                </Button>
+                <Button x:Name="CloseAppButton"
+                        ToolTip="Schliessen"
+                        Style="{DynamicResource SettingWindowTitleBarButton}"
+                        Click="MainWindow_Close">
+                    <Grid Width="30"
+                          Height="25">
+                        <TextBlock Text="r"
+                                   FontFamily="Marlett"
+                                   FontSize="14"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Padding="0,0,0,1">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="{DynamicResource gbxMainWindowTitelBarFontColor}" />
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                    </Grid>
+                </Button>
+            </StackPanel>
+            <Label x:Name="InfoVersionLabel"
+                   Content="{Binding ApplicationVersion}"
+                   VerticalContentAlignment="Center"
+                   UseLayoutRounding="False"
+                   FontSize="10.667"
+                   HorizontalAlignment="Left"
+                   Margin="300,0,0,0"
+                   VerticalAlignment="Bottom"
+                   Foreground="#99FFFFFF" />
+        </Grid>
+        <Grid Margin="0,0,0,7"
+              Grid.Row="2">
+            <DockPanel LastChildFill="True">
+                <StackPanel DockPanel.Dock="Bottom"
+                            Margin="8"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+
+                    <Button x:Name="SaveButton"
+                            MinWidth="100"
+                            Margin="8,0,0,0"
+                            Command="{Binding SaveDataCheckerFileCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Includes/Save.ico"
+                                   Height="16"
+                                   Width="16"></Image>
+                            <Label>Speichern</Label>
+                        </StackPanel>
+                    </Button>
+                    <!--<Button x:Name="CloseButton"
+                            MinWidth="100"
+                            Click="CloseButton_Click"
+                            >
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Includes/Exit_16x.png"
+                                   Height="16"
+                                   Width="16"></Image>
+                            <Label>Schliessen</Label>
+                        </StackPanel>
+                    </Button>-->
+                </StackPanel>
+                <Grid x:Name="LayoutGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0"
+                           Grid.ColumnSpan="2"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Margin="9,0,0,0"
+                           Content="{Binding DataCheckerFileName, TargetNullValue='Keine Datei gewählt'}"
+                           ContentStringFormat="Datei: {0}"></Label>
+                    <Button x:Name="LoadButton"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Width="50"
+                            HorizontalAlignment="Right"
+                            Margin="8"
+                            ToolTip="Lädt die gewählte Datenprüfungs-Datei..."
+                            Command="{Binding LoadDataCheckerFileCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Includes/icoFileopen.png"
+                                   Height="32"
+                                   Width="32"></Image>
+                        </StackPanel>
+                    </Button>
+                    <Grid x:Name="SortControlsGrid"
+                          Grid.Row="1"
+                          Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TreeView x:Name="DataChecksTreeView"
+                                  Margin="10"
+                                  AllowDrop="True"
+                                  PreviewMouseMove="DataChecksTreeView_PreviewMouseMove"
+                                  PreviewMouseLeftButtonDown="DataChecksTreeView_PreviewMouseLeftButtonDown"
+                                  Drop="DataChecksTreeView_Drop"
+                                  MouseMove="DataChecksTreeView_MouseMove"
+                                  ItemsSource="{Binding RootViewModel.Children}"
+                                  ScrollViewer.CanContentScroll="True"
+                                  xmlns:wpfExtensions="clr-namespace:GEOBOX.OSC.IM.DataCheckerTool.WpfExtensions"
+                                  wpfExtensions:DragDropExtension.ScrollOnDragDrop="True"
+                                  HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Stretch"
+                                  Grid.Row="0"
+                                  Grid.Column="0"
+                                  SelectedItemChanged="DataChecksTreeView_SelectedItemChanged">
+
+                            <TreeView.ItemContainerStyle>
+                                <Style TargetType="{x:Type TreeViewItem}">
+                                    <Setter Property="IsExpanded"
+                                            Value="{Binding IsExpanded, Mode=TwoWay}" />
+                                    <Setter Property="IsSelected"
+                                            Value="{Binding IsSelected, Mode=TwoWay}" />
+                                    <Setter Property="FontWeight"
+                                            Value="Normal" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected"
+                                                 Value="True">
+                                            <Setter Property="FontWeight"
+                                                    Value="Bold" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TreeView.ItemContainerStyle>
+                            <TreeView.ItemTemplate>
+                                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                    <Border BorderBrush="CornflowerBlue"
+                                            BorderThickness="0 0 0 0"
+                                            DragOver="TreeViewItem_DragOver"
+                                            DragLeave="TreeViewItem_DragLeave">
+                                        <StackPanel Orientation="Horizontal"
+                                                    MouseDown="StackPanel_MouseDown">
+                                            <TextBlock Text="{Binding Name}" />
+                                            <Button Command="{Binding SortAllDataCheckerChildrenAscendingCommand}"
+                                                    Visibility="{Binding SupportsSortAll, Converter={StaticResource InversedBooleanToVisibilityConverter}}"
+                                                    Margin="8,2,0,2"
+                                                    ToolTip="{Binding SortAllAscendingTooltip}">
+                                                <Image Source="Includes/VSO_SortAllAscending_16x.png"></Image>
+                                            </Button>
+                                            <Button Command="{Binding SortAllDataCheckerChildrenDescendingCommand}"
+                                                    Visibility="{Binding SupportsSortAll, Converter={StaticResource InversedBooleanToVisibilityConverter}}"
+                                                    Margin="8,2,0,2"
+                                                    ToolTip="{Binding SortAllDescendingTooltip}">
+                                                <Image Source="Includes/VSO_SortAllDescending_16x.png"></Image>
+                                            </Button>
+                                            <Button Command="{Binding SortDataCheckerChildrenAscendingCommand}"
+                                                    Visibility="{Binding IsSqlCheckItem, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                    Margin="8,2,0,2"
+                                                    ToolTip="{Binding SortAscendingDetailTooltip}">
+                                                <Image Source="Includes/VSO_SortAscending_16x.png"></Image>
+                                            </Button>
+                                            <Button Command="{Binding SortDataCheckerChildrenDescendingCommand}"
+                                                    Visibility="{Binding IsSqlCheckItem, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                    Margin="8,2,0,2"
+                                                    ToolTip="{Binding SortDescendingDetailTooltip}">
+                                                <Image Source="Includes/VSO_SortDescending_16x.png"></Image>
+                                            </Button>
+                                        </StackPanel>
+                                    </Border>
+                                </HierarchicalDataTemplate>
+                            </TreeView.ItemTemplate>
+
+                        </TreeView>
+                    </Grid>
+                    <Grid x:Name="DetailsGrid"
+                          Grid.Row="1"
+                          Grid.Column="1"
+                          Margin="9">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <!-- Details-->
+                        <Label x:Name="DetailsLabel"
+                                Grid.Row="0"
+                               Grid.Column="0">Details:</Label>
+
+                        <!-- Name-->
+                        <Label x:Name="NameLabel"
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               VerticalAlignment="Top"
+                               >Name:</Label>
+                        <Label x:Name="NameValueLabel"
+                               Grid.Row="1"
+                               Grid.Column="1"
+                               Margin="9,0,0,0"
+                               Content="{Binding Path=SelectedCheckItemViewModel.Name}"
+                               ></Label>
+
+                        <!-- Description-->
+                        <Label x:Name="DescriptionLabel"
+                               Grid.Row="2"
+                               Grid.Column="0"
+                               VerticalAlignment="Top"
+                               >Beschreibung:</Label>
+                        <TextBox x:Name="DescriptionTextBox"
+                                 Grid.Row="2"
+                                 Grid.Column="1"
+                                 Height="50"
+                                 HorizontalScrollBarVisibility="Auto"
+                                 VerticalScrollBarVisibility="Auto"
+                                 IsReadOnly="True"
+                                 Margin="9,0,0,10"
+                                 Text="{Binding Path=SelectedCheckItemViewModel.Description, Mode=OneWay}"></TextBox>
+
+                        <!-- SQL-Statement-->
+                        <Label x:Name="SqlStatementLabel"
+                               Grid.Row="3"
+                               Grid.Column="0"
+                               VerticalAlignment="Top"
+                               >SQL-Statement:</Label>
+                        <TextBox x:Name="SqlStatementTextBox"
+                                 Grid.Row="3"
+                                 Grid.Column="1"
+                                 Height="100"
+                                 HorizontalScrollBarVisibility="Auto"
+                                 VerticalScrollBarVisibility="Auto"
+                                 IsReadOnly="True"
+                                 Margin="9,0,0,9"
+                                 Text="{Binding Path=SelectedCheckItemViewModel.SqlStatement, Mode=OneWay}"></TextBox>
+
+                        <!-- SystemMessages -->
+                        <Label x:Name="SystemMessagesLabel"
+                               Grid.Row="4"
+                               Grid.Column="0"
+                               VerticalAlignment="Top">System-Meldungen:</Label>
+
+                        <RichTextBox x:Name="SystemMessagesTextBox"
+                                 Grid.Row="5"
+                                 Grid.Column="0"
+                                 Grid.ColumnSpan="2"
+                                 HorizontalScrollBarVisibility="Auto"
+                                 VerticalScrollBarVisibility="Auto"
+                                 IsReadOnly="True"></RichTextBox>
+                    </Grid>
+                </Grid>
+            </DockPanel>
+
+        </Grid>
+    </Grid>
+</Window>

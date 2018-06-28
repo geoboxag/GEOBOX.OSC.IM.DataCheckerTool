@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEOBOX.OSC.IM.DataCheckerTool", "GEOBOX.OSC.IM.DataCheckerTool\GEOBOX.OSC.IM.DataCheckerTool.csproj", "{2748C97E-57B8-4E45-9C02-A48694CC3A63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEOBOX.OSC.IM.DataCheckerTool.Testing", "GEOBOX.OSC.IM.DataCheckerTool.Testing\GEOBOX.OSC.IM.DataCheckerTool.Testing.csproj", "{A594613B-C67D-4C9E-BB16-C85228D4A8A6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2748C97E-57B8-4E45-9C02-A48694CC3A63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2748C97E-57B8-4E45-9C02-A48694CC3A63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2748C97E-57B8-4E45-9C02-A48694CC3A63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2748C97E-57B8-4E45-9C02-A48694CC3A63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A594613B-C67D-4C9E-BB16-C85228D4A8A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A594613B-C67D-4C9E-BB16-C85228D4A8A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A594613B-C67D-4C9E-BB16-C85228D4A8A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A594613B-C67D-4C9E-BB16-C85228D4A8A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E31BA154-B0B8-4968-94CD-BE10C57A5DD6}
+	EndGlobalSection
+EndGlobal
