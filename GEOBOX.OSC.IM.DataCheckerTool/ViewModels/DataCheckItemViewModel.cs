@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Input;
 using GEOBOX.OSC.IM.DataCheckerTool.WpfExtensions;
 using GEOBOX.OSC.IM.DataCheckerTool.Domain;
+using System.Runtime.CompilerServices;
 
 namespace GEOBOX.OSC.IM.DataCheckerTool.ViewModels
 {
@@ -41,6 +42,13 @@ namespace GEOBOX.OSC.IM.DataCheckerTool.ViewModels
 
             var groupedDataCheckItems = dataCheckItems.ToLookup(dataCheckItem => dataCheckItem.ParentDataCheckId);
             var parentIds = groupedDataCheckItems.Select(group => group.Key).OrderBy(key => key);
+
+            // Check has Parent
+            if (!IsParent(-1, parentIds))
+            {
+                throw new ArgumentOutOfRangeException("RootElement", "Kein Übergeordnetes Eleement gefunden.");
+            }
+
             AddDataCheckItems(viewModel, new DataCheckItem(-1, rootName, /*isSqlCheckItem*/false, /*supportsSortAll*/ true), groupedDataCheckItems, parentIds);
 
             return viewModel;
@@ -162,7 +170,12 @@ namespace GEOBOX.OSC.IM.DataCheckerTool.ViewModels
 
         private static bool IsParent(DataCheckItem dataCheckItem, IOrderedEnumerable<int> parentIds)
         {
-            return parentIds.Contains(dataCheckItem.Id);
+            return IsParent(dataCheckItem.Id, parentIds);
+        }
+
+        private static bool IsParent(int id, IOrderedEnumerable<int> parentIds)
+        {
+            return parentIds.Contains(id);
         }
     }
 }

@@ -91,7 +91,15 @@ namespace GEOBOX.OSC.IM.DataCheckerTool.ViewModels
 
         public void CreateEmptyRootViewModel()
         {
-            RootViewModel = DataCheckItemViewModel.Create( /*dataCheckItems*/null, String.Empty);
+            try
+            {
+                RootViewModel = DataCheckItemViewModel.Create( /*dataCheckItems*/null, String.Empty);
+            }
+            catch (Exception ex)
+            {
+                AppendSystemMessage($"Problem aufgetretten:{Environment.NewLine}");
+                AppendSystemMessage($"{ex.Message}{Environment.NewLine}");
+            }
         }
 
         public string DataCheckerFileName
@@ -120,8 +128,22 @@ namespace GEOBOX.OSC.IM.DataCheckerTool.ViewModels
             {
                 CurrentXDocument = readerResult.DataChecksDocument;
 
-                RootViewModel =
-                    DataCheckItemViewModel.Create(readerResult.DataCheckItems, System.IO.Path.GetFileName(toLoadDataCheckerFile));
+                try
+                {
+                    RootViewModel =
+                        DataCheckItemViewModel.Create(readerResult.DataCheckItems, System.IO.Path.GetFileName(toLoadDataCheckerFile));
+                }
+                catch(ArgumentOutOfRangeException e)
+                {
+                    AppendSystemMessage($"Problem beim lesen der Datei {toLoadDataCheckerFile}:{Environment.NewLine}");
+                    AppendSystemMessage($"{e.Message}{Environment.NewLine}");
+                    return false;
+                }
+                catch(Exception ex)
+                {
+                    AppendSystemMessage($"Problem aufgetretten:{Environment.NewLine}");
+                    AppendSystemMessage($"{ex.Message}{Environment.NewLine}");
+                }
             }
             return !readerResult.HasErrorMessage();
         }

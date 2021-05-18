@@ -6,7 +6,7 @@ Autodesk AutoCAD Map 3D bietet zurzeit keine Möglichkeit, Datenprüfungen (Data
 Mit diesem Tool können die Datenprüfungen unabhängig organisert und sortiert werden.
 
 ## Vorgehen
-1. Datenprüfungen mit dem Autodesk Infrastructure Administrator exportieren.
+1. Alle Datenprüfungen mit dem Autodesk Infrastructure Administrator exportieren.
 2. Die exportierte Datei mit dem Tool öffnen.
 3. Datenprüfungen nach Wunsch organisieren und sortieren.
 4. Datei speichern und Tool schliessen.
@@ -15,7 +15,7 @@ Mit diesem Tool können die Datenprüfungen unabhängig organisert und sortiert 
 
 ## Voraussetzungen und Installation
 ### Voraussetzung
-- Microsoft .NET Framework 4.7
+- Microsoft .NET Framework 4.8
 
 ### Installation
 - Es benötigt keine Installation.
