@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?include ..\..\config.wxi ?>
+<?include DCT_config.wxi ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="DIR_DataCheckerTool">
+      <!-- Products Assemblys -->
+      <Component Id="CMP_DCT_DataCheckerTool_exe" Guid="4AF7F174-19C7-4994-A5EE-4DEAE6335E4A" Win64="yes">
+        <File Id="FILE_DCT_DataCheckerTool_exe" Name="$(var.DCT_DataCheckerTool_exe)" Source="$(var.Source_Assembly)\$(var.DCT_DataCheckerTool_exe)" KeyPath="yes" />
+        <Shortcut Id="FILE_DCT_DataCheckerTool_exe_Shortcut" Directory="PMF_ProductName" Name="!(loc.DCT_ProgramMenuEntryName)" WorkingDirectory="DIR_DataCheckerTool" Icon="GBproductIcon.ico" Advertise="yes" />
+      </Component>
+      <Component Id="CMP_DCT_DataCheckerTool_exe_config" Guid="05D89F1A-A27B-4D4F-ACB3-B46FC655B9F3" Win64="yes">
+        <File Id="FILE_DCT_DataCheckerTool_exe_config" Name="$(var.DCT_DataCheckerTool_exe_config)" Source="$(var.Source_Assembly)\$(var.DCT_DataCheckerTool_exe_config)" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+    <!-- ************************************************************************************************************************************* -->
+    <!-- Component Groups -->
+    <ComponentGroup Id="CG_DCT_Assembly">
+      <!-- Products Assemblys -->
+      <ComponentRef Id="CMP_DCT_DataCheckerTool_exe" />
+      <ComponentRef Id="CMP_DCT_DataCheckerTool_exe_config" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>

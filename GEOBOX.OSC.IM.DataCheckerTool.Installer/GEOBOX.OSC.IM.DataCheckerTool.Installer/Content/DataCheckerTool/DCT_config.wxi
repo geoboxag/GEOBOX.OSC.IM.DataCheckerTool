@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <!-- Source-Folders in root config.wix -->
+  <?define DCT_DataCheckerTool_exe = "GEOBOX-DataCheckerTool.exe"?>
+  <?define DCT_DataCheckerTool_exe_config = "GEOBOX-DataCheckerTool.exe.config"?>
+  
+</Include>

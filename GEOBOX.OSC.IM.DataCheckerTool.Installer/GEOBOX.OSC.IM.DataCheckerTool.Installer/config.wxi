@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <!--Header-Infos for Installer: do not Change this section -->
+  <?define Manufactor = "GEOBOX AG" ?>
+  <?define Contact = "GEOBOX AG - Engineering"?>
+  <?define www = "www.geobox.ch"?>
+  <?define DescriptionInstaller = "Installer" ?>
+  <?define CommentsInstaller = "(c) by GEOBOX AG - Engineering" ?>
+  <!--Image for Installer UI -->
+  <?define Source_Image="..\..\_images\Background.jpg"?>
+  <?define Source_Banner="..\..\_images\Banner.jpg"?>
+  <!--Angaben zum Installer -->
+  <?define Version="!(bind.FileVersion.FILE_DCT_DataCheckerTool_exe)"?>
+  <?define year="2022"?>
+  <?define MinDotNetVersion="4.8"?>
+  <?define ProductGUID="E0993C12-0C17-4DA4-B8C0-C71FD99D5D36"?>
+  <?define UpgradeGUID="C2A1BB32-89B5-471C-9409-2960D5C516A9"?>
+  <!--Icon-->
+  <?define Product_Icon="geobox.ico"?>
+  <?define Source_Icon="..\..\GEOBOX.OSC.IM.DataCheckerTool"?>
+  <!-- Source - OUTPUT Folder -->
+  <?define Source_Assembly="..\..\_output"?>
+</Include>
