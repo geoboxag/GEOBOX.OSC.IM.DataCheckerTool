@@ -2,8 +2,8 @@
 Tool für das Reorganisieren der Datenprüfungen vom Autodesk AutoCAD Map 3D.
 
 ## Beschrieb
-Autodesk AutoCAD Map 3D bietet zurzeit keine Möglichkeit, Datenprüfungen (DataChecks) zu organisieren und sortieren an.
-Mit diesem Tool können die Datenprüfungen unabhängig organisert und sortiert werden.
+Autodesk AutoCAD Map 3D bietet zurzeit keine Möglichkeit an, Datenprüfungen (DataChecks) zu organisieren und sortieren.
+Mit diesem Tool können die Datenprüfungen unabhängig organisiert und sortiert werden.
 
 ## Vorgehen
 1. Alle Datenprüfungen mit dem Autodesk Infrastructure Administrator exportieren.
@@ -15,7 +15,7 @@ Mit diesem Tool können die Datenprüfungen unabhängig organisert und sortiert 
 
 ## Voraussetzungen und Installation
 ### Voraussetzung
-- Microsoft .NET Framework 4.8
+- Microsoft .NET 10 Desktop Runtime (x64)
 
 ### Installation
 - Es benötigt keine Installation.

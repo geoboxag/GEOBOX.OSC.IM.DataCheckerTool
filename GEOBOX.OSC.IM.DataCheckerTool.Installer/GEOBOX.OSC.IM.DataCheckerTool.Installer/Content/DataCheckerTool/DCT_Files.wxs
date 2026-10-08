@@ -2,23 +2,37 @@
 <?include ..\..\config.wxi ?>
 <?include DCT_config.wxi ?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Fragment>
-    <DirectoryRef Id="DIR_DataCheckerTool">
-      <!-- Products Assemblys -->
-      <Component Id="CMP_DCT_DataCheckerTool_exe" Guid="4AF7F174-19C7-4994-A5EE-4DEAE6335E4A" Win64="yes">
-        <File Id="FILE_DCT_DataCheckerTool_exe" Name="$(var.DCT_DataCheckerTool_exe)" Source="$(var.Source_Assembly)\$(var.DCT_DataCheckerTool_exe)" KeyPath="yes" />
-        <Shortcut Id="FILE_DCT_DataCheckerTool_exe_Shortcut" Directory="PMF_ProductName" Name="!(loc.DCT_ProgramMenuEntryName)" WorkingDirectory="DIR_DataCheckerTool" Icon="GBproductIcon.ico" Advertise="yes" />
-      </Component>
-      <Component Id="CMP_DCT_DataCheckerTool_exe_config" Guid="05D89F1A-A27B-4D4F-ACB3-B46FC655B9F3" Win64="yes">
-        <File Id="FILE_DCT_DataCheckerTool_exe_config" Name="$(var.DCT_DataCheckerTool_exe_config)" Source="$(var.Source_Assembly)\$(var.DCT_DataCheckerTool_exe_config)" KeyPath="yes" />
-      </Component>
-    </DirectoryRef>
-    <!-- ************************************************************************************************************************************* -->
-    <!-- Component Groups -->
-    <ComponentGroup Id="CG_DCT_Assembly">
-      <!-- Products Assemblys -->
-      <ComponentRef Id="CMP_DCT_DataCheckerTool_exe" />
-      <ComponentRef Id="CMP_DCT_DataCheckerTool_exe_config" />
-    </ComponentGroup>
-  </Fragment>
+	<Fragment>
+		<DirectoryRef Id="DIR_DataCheckerTool">
+
+			<!-- Application -->
+			<Component Id="CMP_DCT_DataCheckerTool_exe" Guid="4AF7F174-19C7-4994-A5EE-4DEAE6335E4A" Win64="yes">
+				<File Id="FILE_DCT_DataCheckerTool_exe" Name="$(var.DCT_DataCheckerTool_exe)" Source="$(var.Source_Assembly)\$(var.DCT_DataCheckerTool_exe)" KeyPath="yes" />
+				<Shortcut Id="FILE_DCT_DataCheckerTool_exe_Shortcut" Directory="PMF_ProductName" Name="!(loc.DCT_ProgramMenuEntryName)" WorkingDirectory="DIR_DataCheckerTool" Icon="GBproductIcon.ico" Advertise="yes" />
+			</Component>
+
+			<!-- .NET 10 Dependencies -->
+			<Component Id="CMP_DCT_DataCheckerTool_dll" Guid="B7A8F21D-4C63-4A91-9E02-5D3F8B76C140">
+				<File Id="FILE_DCT_DataCheckerTool_dll" Source="$(var.Source_Assembly)\GEOBOX-DataCheckerTool.dll" KeyPath="yes" />
+			</Component>
+
+			<Component Id="CMP_DCT_DataCheckerTool_deps" Guid="C5D2E907-8A31-4F6B-B420-7E19A6D83F52">
+				<File Id="FILE_DCT_DataCheckerTool_deps" Source="$(var.Source_Assembly)\GEOBOX-DataCheckerTool.deps.json" KeyPath="yes" />
+			</Component>
+
+			<Component Id="CMP_DCT_DataCheckerTool_runtimeconfig" Guid="D9F1B634-2E75-4C80-A163-8B5E07F42D91">
+				<File Id="FILE_DCT_DataCheckerTool_runtimeconfig" Source="$(var.Source_Assembly)\GEOBOX-DataCheckerTool.runtimeconfig.json" KeyPath="yes" />
+			</Component>
+
+		</DirectoryRef>
+
+		<!-- Component Groups -->
+		<ComponentGroup Id="CG_DCT_Assembly">
+			<ComponentRef Id="CMP_DCT_DataCheckerTool_exe" />
+			<ComponentRef Id="CMP_DCT_DataCheckerTool_dll" />
+			<ComponentRef Id="CMP_DCT_DataCheckerTool_deps" />
+			<ComponentRef Id="CMP_DCT_DataCheckerTool_runtimeconfig" />
+		</ComponentGroup>
+
+	</Fragment>
 </Wix>

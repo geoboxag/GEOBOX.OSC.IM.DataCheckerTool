@@ -5,5 +5,5 @@
 	<String Id="Language">1033</String>
   <String Id="ProductName">GEOBOX DataChecker Tool</String>
   <String Id="VersionMsg">A newer version of [ProductName] is allready installed. Exiting installation</String>
-  <String Id="DotNetMsg">This application requires .NET Framework [MinDotNetVersion].</String>
+  <String Id="DotNetMsg">This application requires the Microsoft .NET 10 Desktop Runtime (x64). Please ensure that it is installed. The installation will continue.</String>
 </WixLocalization>

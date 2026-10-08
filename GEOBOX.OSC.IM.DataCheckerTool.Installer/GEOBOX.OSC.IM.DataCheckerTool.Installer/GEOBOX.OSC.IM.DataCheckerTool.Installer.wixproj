@@ -114,7 +114,7 @@
 	</Target>
 	-->
   <Target Name="AfterBuild">
-    <GetAssemblyIdentity AssemblyFiles="..\..\_output\GEOBOX-DataCheckerTool.exe">
+    <GetAssemblyIdentity AssemblyFiles="..\..\_output\GEOBOX-DataCheckerTool.dll">
       <Output TaskParameter="Assemblies" ItemName="AssemblyVersion" />
     </GetAssemblyIdentity>
     <Copy SourceFiles="$(TargetDir)\$(Cultures)\$(OutputName).msi" DestinationFiles="$(TargetDir)\$(Cultures)\$(OutputName)_%(AssemblyVersion.Version).msi" />

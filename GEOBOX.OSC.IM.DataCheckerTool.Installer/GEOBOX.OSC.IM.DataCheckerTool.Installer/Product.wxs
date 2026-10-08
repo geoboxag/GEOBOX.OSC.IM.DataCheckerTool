@@ -3,9 +3,9 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product Id="$(var.ProductGUID)" Name="!(loc.ProductName) $(var.year)" Language="!(loc.Language)" Codepage="1252" Version="$(var.Version)" Manufacturer="$(var.Manufactor)" UpgradeCode="$(var.UpgradeGUID)">
     <Package InstallerVersion="200" Manufacturer="$(var.Manufactor)" Description="!(loc.ProductName) $(var.year) $(var.DescriptionInstaller)" Comments="$(var.CommentsInstaller)" Compressed="yes" Languages="!(loc.Language)" InstallScope="perMachine" Platform="x64" />
-    <Condition Message="!(loc.DotNetMsg)">
+    <!--<Condition Message="!(loc.DotNetMsg)">
       <![CDATA[MsiNetAssemblySupport >= "$(var.MinDotNetVersion)"]]>
-    </Condition>
+    </Condition>-->
     <Upgrade Id="$(var.UpgradeGUID)">
       <UpgradeVersion Property="PREVIOUSVERSIONSINSTALLED" Minimum="1.0.0" Maximum="$(var.Version)" IncludeMinimum="yes" IncludeMaximum="no" OnlyDetect="no" IgnoreRemoveFailure="no" MigrateFeatures="yes" Language="!(loc.Language)" />
       <UpgradeVersion Property="NEWERPRODUCTFOUND" Minimum="$(var.Version)" IncludeMinimum="no" OnlyDetect="yes" Language="!(loc.Language)" />
@@ -51,8 +51,37 @@
 
 	<DialogRef Id="WelcomeDlg" />
 
-	<Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="PrepareDlg">1</Publish>
-	<Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
+
+	  <!-- .NET 10 Warnung -->
+	  <!-- Dialog dimensions and positions are specified in Windows Installer units, not pixels. Scaling is handled by Windows Installer. -->
+	  <Dialog Id="DotNetWarningDlg"
+			  Width="260" Height="100"
+			  Title=".NET 10">
+
+		  <Control Id="Message" Type="Text"
+				   X="20" Y="15" Width="220" Height="45"
+				   Text="!(loc.DotNetMsg)" />
+
+		  <Control Id="Ok" Type="PushButton"
+				   X="100" Y="70" Width="60" Height="17"
+				   Default="yes" Text="OK">
+			  <Publish Event="NewDialog" Value="PrepareDlg">1</Publish>
+		  </Control>
+	  </Dialog>
+
+	  <Publish Dialog="WelcomeDlg" Control="Next"
+			   Event="NewDialog" Value="DotNetWarningDlg" Order="1">
+		  NOT Installed
+	  </Publish>
+
+	  <Publish Dialog="WelcomeDlg" Control="Next"
+			   Event="NewDialog" Value="PrepareDlg" Order="2">
+		  Installed
+	  </Publish>
+	  <!-- .NET 10 Warnung END -->
+
+
+	  <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
 	<Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg">1</Publish>
 	<Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg">1</Publish>
 	<Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
